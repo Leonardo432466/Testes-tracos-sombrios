@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Espelho Frio — teste de entretenimento</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.09' numOctaves='2' seed='7' result='t'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='t' scale='14'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='100' height='100' fill='%23121118'/%3E%3Cg filter='url(%23n)'%3E%3Ccircle cx='34' cy='40' r='16' fill='%237a2222'/%3E%3Ccircle cx='68' cy='30' r='10' fill='%238a2a2a'/%3E%3Ccircle cx='60' cy='68' r='20' fill='%23701f1f'/%3E%3Ccircle cx='22' cy='72' r='9' fill='%23842828'/%3E%3Ccircle cx='80' cy='62' r='7' fill='%23641c1c'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:title" content="O Espelho Frio — teste de entretenimento">
+<meta property="og:description" content="15 perguntas, um retrato só seu. Apenas para entretenimento, sem valor clínico.">
+<meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 210'%3E%3Cdefs%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.025' numOctaves='3' seed='11' result='t'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='t' scale='40'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='400' height='210' fill='%23121118'/%3E%3Cg filter='url(%23n)'%3E%3Ccircle cx='90' cy='70' r='55' fill='%237a2222'/%3E%3Ccircle cx='260' cy='40' r='38' fill='%238a2a2a'/%3E%3Ccircle cx='300' cy='150' r='60' fill='%23701f1f'/%3E%3Ccircle cx='60' cy='165' r='34' fill='%23842828'/%3E%3Ccircle cx='190' cy='120' r='26' fill='%23641c1c'/%3E%3C/g%3E%3C/svg%3E">
+<meta name="theme-color" content="#121118">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#121118;
+    --panel:#1c1a24;
+    --panel-2:#242130;
+    --gold:#c8a15e;
+    --gold-dim:#8a7345;
+    --teal:#5f8482;
+    --paper:#ece7da;
+    --paper-dim:#a9a394;
+    --warn:#b5615f;
+    --line:#33303f;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 15% 10%, rgba(200,161,94,0.06), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(95,132,130,0.07), transparent 45%),
+      var(--ink);
+    color:var(--paper);
+    font-family:'Work Sans', sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:32px 16px 64px;
+  }
+  .stage{
+    width:100%;
+    max-width:640px;
+  }
+  .brand{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:28px;
+  }
+  .brand-mark{
+    width:10px;height:10px;border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 0 3px rgba(200,161,94,0.15);
+  }
+  .brand-name{
+    font-family:'Fraunces', serif;
+    font-size:15px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--paper-dim);
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(32px, 6vw, 44px);
+    line-height:1.05;
+    margin:0 0 18px;
+    color:var(--paper);
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--gold);
+  }
+  .lede{
+    font-size:17px;
+    line-height:1.6;
+    color:var(--paper-dim);
+    margin:0 0 24px;
+  }
+  .notice{
+    border:1px solid var(--warn);
+    background:rgba(181,97,95,0.09);
+    border-radius:10px;
+    padding:16px 18px;
+    font-size:14px;
+    line-height:1.55;
+    color:#ecd7d6;
+    margin-bottom:28px;
+  }
+  .notice strong{
+    color:#fff;
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:15px;
+    margin-bottom:6px;
+    letter-spacing:0.02em;
+  }
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:28px 26px;
+  }
+  .btn{
+    appearance:none;
+    border:none;
+    cursor:pointer;
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.02em;
+    padding:14px 26px;
+    border-radius:999px;
+    background:var(--gold);
+    color:#1b1710;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:hover{
+    transform:translateY(-1px);
+    box-shadow:0 6px 18px rgba(200,161,94,0.25);
+  }
+  .btn.ghost{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--paper);
+  }
+  .btn.ghost:hover{
+    border-color:var(--gold-dim);
+    box-shadow:none;
+  }
+  .btn:disabled{
+    opacity:0.35;
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:none;
+  }
+
+  /* progress */
+  .progress-wrap{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:22px;
+  }
+  .progress-track{
+    flex:1;
+    height:3px;
+    background:var(--line);
+    border-radius:3px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    background:linear-gradient(90deg, var(--teal), var(--gold));
+    width:0%;
+    transition:width .35s ease;
+  }
+  .progress-label{
+    font-size:12px;
+    letter-spacing:0.08em;
+    color:var(--paper-dim);
+    white-space:nowrap;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .q-eyebrow{
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:10px;
+  }
+  .q-text{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    line-height:1.5;
+    color:var(--paper);
+    margin:0 0 26px;
+  }
+
+  .scale{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-bottom:24px;
+  }
+  .scale-option{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    cursor:pointer;
+    background:var(--panel-2);
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .scale-option:hover{
+    border-color:var(--gold-dim);
+  }
+  .scale-option.selected{
+    border-color:var(--gold);
+    background:rgba(200,161,94,0.10);
+  }
+  .scale-dot{
+    width:18px;height:18px;
+    border-radius:50%;
+    border:2px solid var(--paper-dim);
+    flex-shrink:0;
+    position:relative;
+  }
+  .scale-option.selected .scale-dot{
+    border-color:var(--gold);
+  }
+  .scale-option.selected .scale-dot::after{
+    content:'';
+    position:absolute;
+    inset:3px;
+    border-radius:50%;
+    background:var(--gold);
+  }
+  .scale-text{
+    font-size:15px;
+    color:var(--paper);
+  }
+  .scale-num{
+    margin-left:auto;
+    font-size:12px;
+    color:var(--paper-dim);
+    font-variant-numeric:tabular-nums;
+  }
+
+  .nav-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  .hidden{display:none !important;}
+
+  /* intro */
+  .traits{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:26px;
+  }
+  .trait-chip{
+    font-size:12px;
+    letter-spacing:0.04em;
+    color:var(--paper-dim);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:6px 12px;
+  }
+
+  /* results */
+  .result-badge{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:13px;
+    color:var(--gold);
+    letter-spacing:0.02em;
+    margin-bottom:8px;
+  }
+  .result-title{
+    font-family:'Fraunces', serif;
+    font-size:clamp(28px,6vw,38px);
+    margin:0 0 16px;
+    line-height:1.1;
+  }
+  .gauge-wrap{
+    margin:18px 0 26px;
+  }
+  .gauge-track{
+    height:10px;
+    border-radius:6px;
+    background:var(--panel-2);
+    border:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .gauge-fill{
+    height:100%;
+    width:0%;
+    border-radius:6px;
+    background:linear-gradient(90deg, var(--teal), var(--gold), var(--warn));
+    transition:width 1s cubic-bezier(.16,1,.3,1);
+  }
+  .gauge-labels{
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    color:var(--paper-dim);
+    margin-top:6px;
+    letter-spacing:0.04em;
+  }
+  .result-score{
+    font-family:'Fraunces', serif;
+    font-size:15px;
+    color:var(--paper-dim);
+    margin-bottom:18px;
+  }
+  .result-score b{color:var(--gold);}
+  .result-copy{
+    font-size:16px;
+    line-height:1.65;
+    color:var(--paper);
+    margin-bottom:22px;
+  }
+  footer.disclaimer{
+    margin-top:26px;
+    font-size:12.5px;
+    line-height:1.6;
+    color:var(--paper-dim);
+    border-top:1px solid var(--line);
+    padding-top:16px;
+  }
+  .actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:6px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .btn, .progress-fill, .gauge-fill{transition:none;}
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="brand">
+    <div class="brand-mark"></div>
+    <div class="brand-name">O Espelho Frio</div>
+  </div>
+
+  <!-- ===== TELA 1: INTRODUÇÃO ===== -->
+  <section id="screen-intro">
+    <h1>Até onde vai o seu <em>lado frio</em>?</h1>
+    <p class="lede">Um teste rápido e curioso sobre carisma, impulsividade, frieza emocional e outros traços que às vezes chamamos de "sombrios". 15 perguntas, dois minutos, um retrato só seu.</p>
+
+    <div class="notice">
+      <strong>Antes de começar</strong>
+      Este site é puramente de entretenimento e autoconhecimento. Ele NÃO é um instrumento clínico, não avalia psicopatia de verdade e não substitui uma avaliação feita por psicólogo(a) ou psiquiatra. Nenhum resultado aqui constitui diagnóstico. Se você tem preocupações reais sobre sua saúde mental ou a de alguém, procure um profissional qualificado.
+      <br><br>
+      <strong style="margin-bottom:0;">Como funciona a pontuação</strong>
+      Sua pontuação não é fixa: ela compara sua resposta com a média de todas as respostas já dadas por outras pessoas nesse teste. A opção mais escolhida por todos vale 5 pontos, as opções intermediárias valem 3, e a menos escolhida vale 2. Só guardamos contagens anônimas e agregadas por pergunta (nunca respostas individuais identificáveis), e esses números ficam visíveis de forma agregada para calcular o resultado de todo mundo.
+    </div>
+
+    <div class="traits">
+      <span class="trait-chip">Carisma</span>
+      <span class="trait-chip">Impulsividade</span>
+      <span class="trait-chip">Frieza emocional</span>
+      <span class="trait-chip">Manipulação</span>
+      <span class="trait-chip">Tomada de risco</span>
+    </div>
+
+    <button class="btn" onclick="startQuiz()">Começar o teste →</button>
+  </section>
+
+  <!-- ===== TELA 2: QUIZ ===== -->
+  <section id="screen-quiz" class="hidden">
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">1 / 15</div>
+    </div>
+
+    <div class="panel">
+      <div class="q-eyebrow" id="qEyebrow">Pergunta 1</div>
+      <p class="q-text" id="qText">—</p>
+
+      <div class="scale" id="scaleOptions"></div>
+
+      <div class="nav-row">
+        <button class="btn ghost" id="btnBack" onclick="prevQuestion()">← Voltar</button>
+        <button class="btn" id="btnNext" onclick="nextQuestion()" disabled>Próxima →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TELA 3: RESULTADO ===== -->
+  <section id="screen-result" class="hidden">
+    <div class="panel">
+      <div class="result-badge">Seu retrato</div>
+      <h2 class="result-title" id="resultTitle">—</h2>
+
+      <div class="gauge-wrap">
+        <div class="gauge-track"><div class="gauge-fill" id="gaugeFill"></div></div>
+        <div class="gauge-labels">
+          <span>Empático</span>
+          <span>Equilibrado</span>
+          <span>Estratégico</span>
+          <span>Frio</span>
+        </div>
+      </div>
+
+      <p class="result-score">Sua pontuação por consenso foi <b id="resultScore">0.0</b> de 5.0</p>
+      <p class="result-copy" id="resultCopy">—</p>
+
+      <div class="actions">
+        <button class="btn" onclick="restartQuiz()">Refazer o teste</button>
+        <button class="btn ghost" onclick="shareResult()">Copiar resultado</button>
+      </div>
+
+      <footer class="disclaimer">
+        Lembrete: este resultado é apenas um jogo de autopercepção, calculado comparando suas respostas com o padrão de respostas de outras pessoas — sem qualquer validade clínica ou diagnóstica. Traços de personalidade são complexos e não podem ser resumidos por um teste online. Se algo aqui te preocupou, converse com um profissional de saúde mental — isso é sempre a melhor fonte de resposta.
+      </footer>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const questions = [
+    "Em momentos de crise — uma discussão, um acidente, uma notícia ruim — enquanto os outros entram em pânico, eu costumo manter a cabeça fria e pensar com clareza, quase como se estivesse observando a cena de fora.",
+    "Já contei uma mentira, pequena ou grande, para conseguir algo que eu queria, e depois disso não fiquei remoendo culpa — segui em frente normalmente.",
+    "Consigo perceber com precisão o que a outra pessoa está sentindo — sua tristeza, medo ou raiva — mas isso não significa que eu sempre me sinta tocado(a) ou motivado(a) a agir por causa disso.",
+    "Sinto atração por situações arriscadas ou imprevisíveis, mesmo sabendo que elas podem gerar desconforto, prejuízo ou preocupação para pessoas ao meu redor.",
+    "As pessoas costumam dizer que eu sou persuasivo(a): consigo, com relativa facilidade, fazer alguém mudar de ideia ou aceitar fazer algo que originalmente não queria.",
+    "Quando percebo que magoei alguém sem intenção, a sensação de culpa passa rápido — não fico ruminando o assunto por muito tempo.",
+    "No dia a dia, prefiro decidir na hora e agir por impulso a parar, planejar todos os detalhes e só então executar.",
+    "Sou capaz de demonstrar uma emoção — alegria, tristeza, interesse — que não estou sentindo de verdade, quando isso me ajuda a alcançar algo ou a me encaixar em uma situação.",
+    "Rotina e previsibilidade me cansam rápido; eu ativamente busco novidade, estímulo ou adrenalina para não sentir tédio.",
+    "Em algum momento da vida, tratei uma pessoa mais como um meio para atingir um objetivo do que como alguém importante por si só — e não me incomodei tanto com isso quanto imaginava que deveria.",
+    "Enxergo regras e normas sociais como orientações gerais, válidas principalmente para os outros; quando fazem sentido para mim, eu as sigo — quando não, sinto pouca hesitação em ignorá-las.",
+    "Tenho consciência do meu próprio charme ou magnetismo pessoal e, sim, uso isso de forma estratégica quando quero algo de alguém.",
+    "Olhando para trás, mesmo decisões polêmicas ou que feriram outras pessoas não me deixam com um peso de arrependimento — encaro como parte do jogo.",
+    "Entre vencer uma disputa e ser justo(a) com todos os envolvidos, quando só uma opção é possível, minha prioridade tende a ser vencer.",
+    "Consigo dizer algo que sei ser falso — em um trabalho, numa conversa, numa negociação — mantendo o tom de voz, a expressão e a postura totalmente naturais, sem que ninguém perceba.",
+
+    "Pense em uma pessoa que você magoou no passado: ao relembrar essa situação agora, você sente mais culpa, mais indiferença, ou mais justificativa pelo que fez?",
+    "Quando alguém próximo compartilha um problema sério com você, sua primeira reação interna costuma ser de empatia genuína, ou de avaliar rapidamente o que você pode ganhar ou perder com aquela situação?",
+    "Ao imaginar suas relações mais próximas, você diria que se conecta com as pessoas principalmente pelo vínculo emocional em si, ou porque elas cumprem uma função útil na sua vida?",
+    "Se você pudesse obter uma grande vantagem pessoal mentindo, sem qualquer chance de ser descoberto(a), o que pesaria mais na sua decisão: o risco de ser pego(a), ou algum desconforto moral com a mentira em si?",
+    "Reflita sobre como as pessoas mais próximas a você te descreveriam: elas usariam palavras como \"caloroso(a)\" e \"confiável\", ou \"calculista\" e \"imprevisível\"? Qual dessas descrições soa mais verdadeira, mesmo que incômoda?"
+  ];
+
+  const scaleLabels = [
+    {v:1, t:"Discordo totalmente"},
+    {v:2, t:"Discordo"},
+    {v:3, t:"Neutro"},
+    {v:4, t:"Concordo"},
+    {v:5, t:"Concordo totalmente"}
+  ];
+
+  let current = 0;
+  let answers = new Array(questions.length).fill(null);
+
+  // Carrega, de forma assíncrona, as contagens agregadas e anônimas de respostas
+  // (quantas vezes cada opção 1-5 foi escolhida em cada pergunta, por todos os usuários).
+  // Se o armazenamento falhar ou ainda não houver dados suficientes, o cálculo cai
+  // em um valor neutro (3 pontos) até que exista consenso coletivo formado.
+  const countsDataPromise = (async () => {
+    try {
+      const result = await window.storage.get('answer-counts', true);
+      return result && result.value ? JSON.parse(result.value) : {};
+    } catch (e) {
+      return {};
+    }
+  })();
+
+  function emptyCountRow(){
+    return {1:0, 2:0, 3:0, 4:0, 5:0};
+  }
+
+  // Define quantos pontos (5, 3 ou 2) uma resposta vale para uma pergunta,
+  // com base em qual opção foi a mais / menos escolhida por todos até agora.
+  function scoreForQuestion(qIndex, userValue, countsData){
+    const row = countsData[qIndex] || emptyCountRow();
+    const total = Object.values(row).reduce((a,b) => a + b, 0);
+
+    // Dados insuficientes para um consenso confiável ainda: pontuação neutra.
+    if(total < 3){
+      return 3;
+    }
+
+    const ranked = Object.entries(row).sort((a,b) => b[1] - a[1]);
+    const mostCommon = Number(ranked[0][0]);
+    const leastCommon = Number(ranked[ranked.length - 1][0]);
+
+    if(userValue === mostCommon) return 5;
+    if(userValue === leastCommon) return 2;
+    return 3;
+  }
+
+  function startQuiz(){
+    document.getElementById('screen-intro').classList.add('hidden');
+    document.getElementById('screen-quiz').classList.remove('hidden');
+    current = 0;
+    renderQuestion();
+  }
+
+  function renderQuestion(){
+    const q = questions[current];
+    const isReflection = current >= 15;
+    document.getElementById('qEyebrow').textContent = isReflection
+      ? 'Autoanálise ' + (current - 14) + ' de 5'
+      : 'Pergunta ' + (current+1) + ' de 15';
+    document.getElementById('qText').textContent = q;
+    document.getElementById('progressLabel').textContent = (current+1) + ' / ' + questions.length;
+    document.getElementById('progressFill').style.width = (((current+1)/questions.length)*100) + '%';
+
+    const wrap = document.getElementById('scaleOptions');
+    wrap.innerHTML = '';
+    scaleLabels.forEach(opt => {
+      const div = document.createElement('div');
+      div.className = 'scale-option' + (answers[current] === opt.v ? ' selected' : '');
+      div.onclick = () => selectAnswer(opt.v);
+      div.innerHTML = `
+        <div class="scale-dot"></div>
+        <div class="scale-text">${opt.t}</div>
+        <div class="scale-num">${opt.v}</div>
+      `;
+      wrap.appendChild(div);
+    });
+
+    document.getElementById('btnBack').style.visibility = current === 0 ? 'hidden' : 'visible';
+    document.getElementById('btnNext').disabled = answers[current] === null;
+    document.getElementById('btnNext').textContent = current === questions.length - 1 ? 'Ver resultado →' : 'Próxima →';
+  }
+
+  function selectAnswer(v){
+    answers[current] = v;
+    renderQuestion();
+  }
+
+  function nextQuestion(){
+    if(answers[current] === null) return;
+    if(current === questions.length - 1){
+      showResult();
+    } else {
+      current++;
+      renderQuestion();
+    }
+  }
+
+  function prevQuestion(){
+    if(current === 0) return;
+    current--;
+    renderQuestion();
+  }
+
+  async function showResult(){
+    document.getElementById('screen-quiz').classList.add('hidden');
+    document.getElementById('screen-result').classList.remove('hidden');
+    document.getElementById('resultTitle').textContent = 'Calculando o consenso…';
+    document.getElementById('resultCopy').textContent = 'Comparando suas respostas com o padrão coletivo de quem já fez o teste.';
+
+    const countsData = await countsDataPromise;
+
+    // Pontua cada resposta comparando com o que a maioria já respondeu (5 = mais comum,
+    // 3 = intermediária, 2 = menos comum) e, em seguida, atualiza a contagem coletiva.
+    let totalPoints = 0;
+    answers.forEach((val, i) => {
+      totalPoints += scoreForQuestion(i, val, countsData);
+      const row = countsData[i] || emptyCountRow();
+      row[val] = (row[val] || 0) + 1;
+      countsData[i] = row;
+    });
+
+    const avg = totalPoints / questions.length; // varia entre 2.0 e 5.0
+    const avgRounded = Math.round(avg * 10) / 10;
+
+    document.getElementById('resultScore').textContent = avgRounded.toFixed(1);
+    const gaugePct = Math.max(0, Math.min(100, ((avg - 2) / 3) * 100));
+    setTimeout(() => {
+      document.getElementById('gaugeFill').style.width = gaugePct + '%';
+    }, 80);
+
+    let title, copy;
+    if(avg <= 2.75){
+      title = "Alma Empática";
+      copy = "Na maioria das perguntas, você respondeu diferente do padrão mais comum de quem já fez o teste — o que aqui é lido como um perfil que se afasta das respostas associadas a frieza e distanciamento. Sugere alguém que costuma pensar no impacto de suas ações sobre os outros antes de agir.";
+    } else if(avg <= 3.5){
+      title = "Equilíbrio Ambíguo";
+      copy = "Suas respostas ficaram divididas entre o padrão mais comum e o menos comum das outras pessoas. Isso sugere um perfil que navega entre razão e emoção, sem se encaixar totalmente em nenhum extremo.";
+    } else if(avg <= 4.25){
+      title = "Estrategista Frio(a)";
+      copy = "Boa parte das suas respostas coincidiu com a opção mais escolhida por quem já fez o teste — justamente as respostas associadas a controle emocional, pragmatismo e carisma calculado.";
+    } else {
+      title = "Arquiteto(a) das Sombras";
+      copy = "Suas respostas coincidiram fortemente com o padrão mais comum em quase todas as perguntas — o perfil de resposta mais associado, aqui, a charme afiado, baixa culpa e frieza estratégica. Lembre-se: isso reflete um padrão de respostas, não um veredito sobre quem você é.";
+    }
+
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('resultCopy').textContent = copy;
+
+    try {
+      await window.storage.set('answer-counts', JSON.stringify(countsData), true);
+    } catch (e) {
+      console.error('Não foi possível salvar as contagens agregadas:', e);
+    }
+  }
+
+  function restartQuiz(){
+    answers = new Array(questions.length).fill(null);
+    current = 0;
+    document.getElementById('screen-result').classList.add('hidden');
+    document.getElementById('screen-intro').classList.remove('hidden');
+  }
+
+  function shareResult(){
+    const title = document.getElementById('resultTitle').textContent;
+    const score = document.getElementById('resultScore').textContent;
+    const text = `Fiz o teste "O Espelho Frio" e meu resultado foi: ${title} (média ${score}/5). É só um teste de entretenimento, sem valor clínico!`;
+    navigator.clipboard?.writeText(text).then(() => {
+      const btn = event.target;
+      const original = btn.textContent;
+      btn.textContent = 'Copiado ✓';
+      setTimeout(() => btn.textContent = original, 1500);
+    }).catch(() => {
+      alert(text);
+    });
+  }
+</script>
+</body>
+</html>
